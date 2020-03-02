@@ -2,6 +2,12 @@
 
 This is an exercise in containerizing a Python Flask web server. A CRUD RESTful API is implemented to manipulate data in a MongoDB database about passengers on the Titanic which can then be deployed to a Kubernetes cluster.
 
+## Issues with implementation
+
+- The use of a manual nginx apparently to compensate the need for ingress is not necessary and hard to maintain
+- The leftover commented out lines of the haproxy in the docker-compose file show lack of best practices (clean solution)
+- Use of a deployment for the importer is not a good choice, it's not best practice to have a continually crash-looping pod reimporting the database all the time
+
 ## Prereqs
 
 * [Minikube](https://kubernetes.io/docs/tasks/tools/install-minikube/) installed or `kubectl` configured for your Kubernetes cluster.
