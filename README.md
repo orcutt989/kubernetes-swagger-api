@@ -1,4 +1,4 @@
-# API-exercise
+# kubernetes-swagger-api
 
 This is an exercise in containerizing a Python Flask web server. A CRUD RESTful API is implemented to manipulate data in a MongoDB database about passengers on the Titanic which can then be deployed to a Kubernetes cluster.
 
