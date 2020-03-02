@@ -1,0 +1,31 @@
+version: '3'
+services:
+  mongodb:
+    image: mongo
+    ports:
+      - "27017:27017"
+  mongo-seed:
+    image: imaginarycrane/titanic-seed
+    #build: ./mongo-seed
+  app:
+    image: imaginarycrane/titanic-api:V1
+    #build: ./app
+    ports:
+      - 80:80
+    # environment:
+    #  - SERVICE_PORTS=8080
+    depends_on: 
+      - mongodb
+    labels:
+      kompose.service.type: nodeport
+  # lb:
+  #   restart: always
+  #   image: dockercloud/haproxy
+  #   ports:
+  #     - 80:80
+  #   depends_on: 
+  #     - app
+  #   environment:
+  #     - BALANCE=leastconn
+  #   volumes:
+  #     - /var/run/docker.sock:/var/run/docker.sock
